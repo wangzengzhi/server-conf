@@ -102,7 +102,7 @@
 	ln -sf /usr/local/php/bin/* /usr/bin
 	ln -sf /usr/local/php/sbin/php-fpm  /usr/sbin
 	cp /usr/local/src/php-7.2.11/php.ini-production /usr/local/php/etc/php.ini
-	cp p/usr/local/src/php-7.2.11/sapi/fpm/php-fpm.service /usr/lib/systemd/system/php-fpm.service
+	cp /usr/local/src/php-7.2.11/sapi/fpm/php-fpm.service /usr/lib/systemd/system/php-fpm.service
 	cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf
 	cp /usr/local/php/etc/php-fpm.d/www.conf.default /usr/local/php/etc/php-fpm.d/www.conf
 	systemctl daemon-reload
@@ -133,3 +133,13 @@
 	systemctl start mysqld
   	```
   	参考：[mysql docs](https://dev.mysql.com/doc/mysql-yum-repo-quick-guide/en/#repo-qg-yum-installing)
+  	
+6. 防火墙
+ 
+ 	```
+ 	firewall-cmd --permanent --zone=public --add-port=22222/tcp
+	firewall-cmd --permanent --zone=public --add-port=80/tcp
+	firewall-cmd --permanent --zone=public --add-port=443/tcp
+	firewall-cmd --reload
+	firewall-cmd --zone=public --list-ports
+ 	```

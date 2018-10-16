@@ -49,7 +49,7 @@ ln -sf /usr/local/$PHPDIR/ /usr/local/php
 ln -sf /usr/local/php/bin/* /usr/bin
 ln -sf /usr/local/php/sbin/php-fpm  /usr/sbin
 cp /usr/local/src/$PHPDIR/php.ini-production /usr/local/php/etc/php.ini
-cp p/usr/local/src/$PHPDIR/sapi/fpm/php-fpm.service /usr/lib/systemd/system/php-fpm.service
+cp /usr/local/src/$PHPDIR/sapi/fpm/php-fpm.service /usr/lib/systemd/system/php-fpm.service
 cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf
 cp /usr/local/php/etc/php-fpm.d/www.conf.default /usr/local/php/etc/php-fpm.d/www.conf
 systemctl daemon-reload
