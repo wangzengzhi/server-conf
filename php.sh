@@ -12,6 +12,9 @@ cd /usr/local/src
 wget http://cn2.php.net/distributions/$PHPTAR
 tar zxvf $PHPTAR
 
+# cd php source
+cd $PHPDIR
+
 # make configure
 ./configure --prefix=/usr/local/$PHPDIR \
 --with-config-file-path=/usr/local/php/etc \

@@ -13,7 +13,7 @@ EOF
 yum -y install nginx
 
 # forbid selinux
-setenfore permissive
+setenforce permissive
 sed -i 's/^SELINUX=.*/SELINUX=permissive/g' /etc/selinux/config
 
 # temporary close firewalld
