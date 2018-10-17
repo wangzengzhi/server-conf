@@ -4,7 +4,7 @@
 	yum -y update
 	yum -y install yum-utils mysql vim wget zip unzip gcc autoconf  git \
 	openssl-devel curl-devel \
-	libxml2-devel libpng-devel freetype-devel libjpeg-devel
+	libxml2-devel libpng-devel freetype-devel libjpeg-devel ImageMagick-devel
 	```
 
 2. 安装 nginx
@@ -109,7 +109,8 @@
 	systemctl enable php-fpm
 	systemctl start php-fpm
 	pecl install igbinary redis
-	echo -e "extension=igbinary.so\nextension=redis.so" >> /usr/local/php/etc/php.ini
+	pecl install imagick
+	echo -e "extension=igbinary.so\nextension=redis.so\nextension=imagick.so" >> /usr/local/php/etc/php.ini
 	```
 	
 4. 安装 redis
@@ -140,6 +141,9 @@
  	firewall-cmd --permanent --zone=public --add-port=22222/tcp
 	firewall-cmd --permanent --zone=public --add-port=80/tcp
 	firewall-cmd --permanent --zone=public --add-port=443/tcp
-	firewall-cmd --reload
-	firewall-cmd --zone=public --list-ports
+	firewall-cmd --permanent --zone=public --add-port=3306/tcp
+	firewall-cmd --reload #重载
+	firewall-cmd --zone=public --list-ports #查看
+	
+	firewall-cmd --zone=public --remove-port=80/tcp --permanent #删除
  	```
