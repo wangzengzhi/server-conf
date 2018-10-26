@@ -28,12 +28,17 @@ yum install -y ansible
 
 #### sonarqube
 
-````
+```
 docker run -d --name sonarqube \
     -p 9000:9000 -p 9092:9092 \
     -e SONARQUBE_JDBC_USERNAME=sonar \
     -e SONARQUBE_JDBC_PASSWORD=sonar \
     -e SONARQUBE_JDBC_URL=jdbc:postgresql://localhost/sonar \
+    --restart always \
+    -v /data/sonarqube/conf:/opt/sonarqube/conf \
+    -v /data/sonarqube/data:/opt/sonarqube/data \
+    -v /data/sonarqube/extensions:/opt/sonarqube/extensions \
+    -v /data/sonarqube/lib/bundled-plugins:/opt/sonarqube/lib/bundled-plugins \
     sonarqube:alpine
 ```
 
